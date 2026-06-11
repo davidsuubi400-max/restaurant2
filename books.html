@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Braza Restaurant | Authentic Grills & Brazilian Flavors</title>
+    <!-- Google Fonts + Font Awesome 6 (free) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fffaf5;
+            color: #2c2418;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* custom colors & utilities */
+        :root {
+            --braza-gold: #c6a43f;
+            --braza-dark: #1f1a12;
+            --braza-red: #b53b2e;
+            --braza-cream: #fef7e6;
+            --braza-charcoal: #2e2a24;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* header / navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(31, 26, 18, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(198, 164, 63, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+        }
+
+        .logo h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #e9c468, #b58d2e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 0.8rem;
+            display: block;
+            color: #d4b15c;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #f5e7d9;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--braza-gold);
+        }
+
+        .book-btn {
+            background: var(--braza-gold);
+            padding: 0.6rem 1.4rem;
+            border-radius: 40px;
+            color: #1f1a12 !important;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .book-btn:hover {
+            background: #dbb34c;
+            transform: scale(1.02);
+        }
+
+        /* hero section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 5rem;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+        .hero-content .gold-text {
+            color: var(--braza-gold);
+            font-style: italic;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 1.2rem 0 2rem;
+            line-height: 1.6;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--braza-gold);
+            border: none;
+            padding: 0.9rem 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            color: #1f1a12;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--braza-gold);
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .btn-outline:hover {
+            background: var(--braza-gold);
+            color: #1f1a12;
+        }
+        .btn-primary:hover {
+            background: #b58d2e;
+            transform: translateY(-3px);
+        }
+
+        /* sections general */
+        section {
+            padding: 5rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2c2418;
+        }
+        .section-sub {
+            text-align: center;
+            color: #7f6b4a;
+            max-width: 680px;
+            margin: 0 auto 3rem auto;
+            font-weight: 400;
+        }
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: var(--braza-gold);
+            margin: 0.8rem auto 2rem auto;
+        }
+
+        /* menu cards */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 2rem;
+        }
+        .menu-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+            text-align: center;
+            padding-bottom: 1.5rem;
+        }
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 36px rgba(0,0,0,0.1);
+        }
+        .menu-img {
+            height: 210px;
+            background-size: cover;
+            background-position: center;
+        }
+        .menu-card h3 {
+            font-size: 1.7rem;
+            margin: 1.2rem 0 0.3rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .price {
+            color: var(--braza-red);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+        }
+        .desc {
+            padding: 0 1rem;
+            color: #5f5340;
+            font-size: 0.9rem;
+        }
+
+        /* about section */
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text p {
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+            color: #3e3322;
+        }
+        .about-img {
+            flex: 1;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: 0.3s;
+        }
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--braza-gold);
+            margin-top: 1rem;
+        }
+
+        /* reservations form */
+        .reserve-section {
+            background: linear-gradient(to right, #fef3e4, #fff6ed);
+        }
+        .form-wrapper {
+            max-width: 720px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 48px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .input-group input, .input-group select, .form-wrapper textarea {
+            flex: 1;
+            padding: 1rem 1.2rem;
+            border: 1px solid #eedbc8;
+            border-radius: 60px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fefaf5;
+        }
+        .form-wrapper textarea {
+            border-radius: 32px;
+            width: 100%;
+            resize: vertical;
+        }
+        .book-table-btn {
+            background: var(--braza-dark);
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .book-table-btn:hover {
+            background: var(--braza-gold);
+            color: #1f1a12;
+        }
+
+        /* testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .testi-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+            border: 1px solid #f5e5d8;
+        }
+        .stars {
+            color: var(--braza-gold);
+            margin-bottom: 1rem;
+        }
+        .testi-text {
+            font-style: italic;
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+
+        /* footer */
+        footer {
+            background: var(--braza-dark);
+            color: #d9c8b2;
+            padding: 3rem 0 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: var(--braza-gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .social-icons a {
+            color: #d9c8b2;
+            margin-right: 1rem;
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: var(--braza-gold);
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #3e3527;
+            padding-top: 1.8rem;
+            font-size: 0.8rem;
+        }
+
+        /* responsive */
+        @media (max-width: 900px) {
+            .nav-container { flex-direction: column; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .container { padding: 0 1.5rem; }
+            .section-title { font-size: 2.2rem; }
+        }
+        @media (max-width: 600px) {
+            .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .btn-group { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <h2>BRAZA</h2>
+            <span>Fogo & Churrasco</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reservations">Reservations</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div>
+            <a href="#reservations" class="book-btn"><i class="fas fa-utensils"></i> Book a Table</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container hero-content">
+        <h1>Welcome to <span class="gold-text">BRAZA</span></h1>
+        <p>Authentic Brazilian churrasco & live-fire grilling. Where passion meets flame and every bite tells a story.</p>
+        <div class="btn-group">
+            <a href="#menu" class="btn-primary"><i class="fas fa-fire"></i> Explore Our Menu</a>
+            <a href="#reservations" class="btn-outline"><i class="fas fa-calendar-check"></i> Reserve Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu">
+    <div class="container">
+        <h2 class="section-title">Signature Fire & Flames</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Our meats are slow-roasted over open flames, seasoned with Brazilian sea salt and love.</p>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/2338404/pexels-photo-2338404.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <h3>Picanha Premium</h3>
+                <div class="price">$32</div>
+                <p class="desc">Prime cut of beef, garlic & rock salt, grilled to perfection. Served with chimichurri.</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <h3>Fraldinha</h3>
+                <div class="price">$28</div>
+                <p class="desc">Tender bottom sirloin with smoky paprika rub, juicy and full of flavor.</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <h3>Costela de Boi</h3>
+                <div class="price">$38</div>
+                <p class="desc">Slow-roasted beef ribs, falling off the bone, basted with honey glaze.</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <h3>Veggie Especial</h3>
+                <div class="price">$22</div>
+                <p class="desc">Grilled hearts of palm, plantains, and seasonal vegetables with cashew cream.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container about-grid">
+        <div class="about-text">
+            <h2 class="section-title" style="text-align: left;">The Braza Story</h2>
+            <div class="divider" style="margin: 0 0 1.5rem 0;"></div>
+            <p>Born from the vibrant streets of São Paulo and Rio, Braza Restaurant brings the authentic Brazilian churrasco experience to your table. Our gaúcho-style grilling tradition honors the fire, the salt, and the craft of centuries-old barbecue.</p>
+            <p>Every cut is hand-selected by our 'Mestre Churrasqueiro' and roasted over charcoal embers. At Braza, we don’t just serve meals — we create memories around the fire. Samba, friendship, and the sizzle of picanha await you.</p>
+            <div class="signature">— Chef Rodrigo, Founder</div>
+        </div>
+        <div class="about-img">
+            <img src="https://images.pexels.com/photos/2679501/pexels-photo-2679501.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Braza kitchen grilling">
+        </div>
+    </div>
+</section>
+
+<!-- Reservations -->
+<section id="reservations" class="reserve-section">
+    <div class="container">
+        <h2 class="section-title">Reserve Your Table</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Come taste the rhythm of Brazilian grill. Book a table for an unforgettable evening.</p>
+        <div class="form-wrapper">
+            <form id="reservationForm">
+                <div class="input-group">
+                    <input type="text" id="resName" placeholder="Full Name *" required>
+                    <input type="email" id="resEmail" placeholder="Email Address *" required>
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="resPhone" placeholder="Phone Number">
+                    <input type="date" id="resDate" required>
+                    <select id="resTime" required>
+                        <option value="">Select Time</option>
+                        <option>5:00 PM</option>
+                        <option>6:00 PM</option>
+                        <option>7:00 PM</option>
+                        <option>8:00 PM</option>
+                        <option>9:00 PM</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <select id="resGuests" required>
+                        <option value="">Number of Guests</option>
+                        <option>1</option><option>2</option><option>3</option><option>4</option>
+                        <option>5</option><option>6</option><option>7+</option>
+                    </select>
+                </div>
+                <textarea rows="2" id="resMessage" placeholder="Special requests? (allergies, celebration, etc.)"></textarea>
+                <button type="submit" class="book-table-btn"><i class="fas fa-concierge-bell"></i> Complete Reservation</button>
+                <p id="formFeedback" style="margin-top: 1rem; font-size:0.8rem; text-align:center;"></p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section>
+    <div class="container">
+        <h2 class="section-title">What Guests Say</h2>
+        <div class="divider"></div>
+        <div class="testimonial-grid">
+            <div class="testi-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testi-text">"The most authentic Brazilian steakhouse! The picanha was exceptional, and the vibe made us feel like we were in Rio. Highly recommend!"</p>
+                <h4>- Isabella M.</h4>
+            </div>
+            <div class="testi-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testi-text">"Braza's fire-grilled meats and vibrant caipirinhas are perfection. The service is warm and welcoming. A new favorite spot."</p>
+                <h4>- David Chen</h4>
+            </div>
+            <div class="testi-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <p class="testi-text">"Incredible vegetarian options too! The grilled pineapple and spiced veggies blew my mind. Cozy atmosphere and live acoustic nights."</p>
+                <h4>- Sofia L.</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact & Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>BRAZA Restaurant</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 1300 Flame Street, Downtown<br> Miami, FL 33132</p>
+                <p><i class="fas fa-phone-alt"></i> +1 (305) 833-2722</p>
+                <p><i class="fas fa-envelope"></i> hello@brazaresto.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Opening Hours</h4>
+                <p>Mon - Thu: 5PM – 11PM<br>Fri - Sat: 4PM – 12AM<br>Sun: 12PM – 9PM (Brunch + Grill)</p>
+            </div>
+            <div class="footer-col">
+                <h4>Follow The Fire</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-yelp"></i></a>
+                </div>
+                <p style="margin-top: 1rem;">Stay updated for live samba nights & special churrasco events.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 BRAZA Restaurant — Authentic Brazilian Grill. All rights reserved. | Crafted with fire & passion</p>
+        </div>
+    </div>
+</footer>
+
+<!-- simple smooth scroll + form handling -->
+<script>
+    // active link highlight on scroll (simple)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    function updateActiveLink() {
+        let scrollPos = window.scrollY + 150;
+        sections.forEach(sec => {
+            const offsetTop = sec.offsetTop;
+            const offsetHeight = sec.offsetHeight;
+            const id = sec.getAttribute('id');
+            if(scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink();
+
+    // reservation form handling (static demo, prevent default and show success)
+    const form = document.getElementById('reservationForm');
+    const feedback = document.getElementById('formFeedback');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('resName').value.trim();
+        const email = document.getElementById('resEmail').value.trim();
+        const date = document.getElementById('resDate').value;
+        const time = document.getElementById('resTime').value;
+        const guests = document.getElementById('resGuests').value;
+        if(!name || !email || !date || !time || !guests) {
+            feedback.innerHTML = '<span style="color:#b53b2e;">Please fill all required fields.</span>';
+            return;
+        }
+        feedback.innerHTML = '<span style="color:#2a6b47;"><i class="fas fa-check-circle"></i> Thank you, ' + name + '! Your table is reserved at Braza. We’ll send confirmation shortly.</span>';
+        form.reset();
+        setTimeout(() => {
+            feedback.innerHTML = '';
+        }, 5000);
+    });
+
+    // smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === "#" || targetId === "") return;
+            const targetElem = document.querySelector(targetId);
+            if(targetElem) {
+                e.preventDefault();
+                targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
